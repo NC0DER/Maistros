@@ -1,7 +1,7 @@
 import os
 
 # Set the project dir path.
-project_dir_path = '/home/nick/source/GreekGemma'
+project_dir_path = ''
 
 # Set the API tokens.
 hf_access_token = ''
