@@ -4,7 +4,7 @@
 
 # Maistros: A Greek Large Language Model Adapted Through Knowledge Distillation From Large Reasoning Models
 
-This repository stores the code to reproduce the [arxiv paper](https://arxiv.org/abs/2605.01870).  
+This repository stores the code to facilitate reproducibility for the [arxiv paper](https://arxiv.org/abs/2605.01870).  
 The model (full and 4-bit quantized versions) and dataset are hosted on [HuggingFace](https://huggingface.co/IMISLab).
 
 <img src="images/maistros_approach.png" width="400"/>  
@@ -15,10 +15,10 @@ pip install requirements.txt
 ```
 
 ## First Time Setup.
-You need to set the project directory path in `src/config.py`.
-The processed datasets and generated answers are included for reproducibility.
-To reproduce the experiments, run the `reproduce_experiments.py`
-Setting API keys is only required to run the `overall_approach.py` (optional).
+You need to set the project directory path in `src/config.py`.  
+The processed datasets and generated answers are included for reproducibility.  
+To reproduce the experiments, run the `reproduce_experiments.py`  
+Setting API keys is only required to run the `overall_approach.py` (optional).  
 
 ## Citation
 ```
