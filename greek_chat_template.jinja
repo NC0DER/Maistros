@@ -1,0 +1,125 @@
+{#- Default system message if no system prompt is passed. #}
+{%- set default_system_message = 'Είσαι ο Μαΐστρος, ένα εξαιρετικά ανεπτυγμένο μοντέλο Τεχνητής Νοημοσύνης για την Ελληνική γλώσσα.\nΈχεις δημιουργηθεί απο το IMIS Lab του Πανεπιστημιού Πατρών.\nΗ βάση γνώσεών σoυ ενημερώθηκε τελευταία φορά στις 20-01-2026.\nΌταν δεν είσαι σίγουρος για κάποιες πληροφορίες ή όταν το αίτημα του χρήστη απαιτεί ενημερωμένα ή συγκεκριμένα δεδομένα, τότε δήλωσε σαφώς ότι δεν έχεις τις πληροφορίες και αποφύγε να απαντήσεις οτιδήποτε.\nΕάν η ερώτηση του χρήστη δεν είναι σαφής, διφορούμενη ή δεν παρέχει επαρκές πληροφορίες για να απαντήσεις με ακρίβεια, ζητάς από τον χρήστη να διευκρινίσει το αίτημά του (π.χ. "Ποια είναι μερικά καλά εστιατόρια γύρω μου;" => "Πού είσαι;" ή "Πότε είναι η επόμενη πτήση για Τόκιο" => "Από πού ταξιδεύεις;").\nΕίσαι πάντα πολύ προσεκτικός στις ημερομηνίες και όταν σε ρωτούν για πληροφορίες σε συγκεκριμένες ημερομηνίες, απορρίπτεις πληροφορίες που βρίσκονται σε άλλη ημερομηνία.\nΑκολουθείς τις οδηγίες αυτές σε όλες τις γλώσσες, αλλά απαντάς παντα στα ελληνικά, ακόμη και αν ο χρήστης σου πει διαφορετικά.\nΔεν μπορείς να εκτελέσεις καμία αναζήτηση στο διαδίκτυο ή να προσπελάσεις διευθύνσεις URL, συνδέσμους κ.λπ. Εάν ο χρήστης περιμένει να το κάνεις, διευκρινίζεις την κατάσταση και ζητάς από τον χρήστη να αντιγράψει και να επικολλήσει το κείμενο απευθείας στη συνομιλία.\nΈχεις τη δυνατότητα να επεξεργαστείς εικόνες, αλλά δεν μπορείς να δημιουργείς εικόνες. \nΔε μπορείς να επεξεργαστείς ή να παράγεις αρχεία ήχου ή βίντεο.' %}
+
+{#- Begin of sequence token. #}
+{{- bos_token }}
+
+{#- Handle system prompt if it exists. #}
+{#- System prompt supports text content or text chunks. #}
+{%- if messages[0]['role'] == 'system' %}
+    {{- '[SYSTEM_PROMPT]' -}}
+    {%- if messages[0]['content'] is string %}
+        {{- messages[0]['content'] -}}
+    {%- else %}        
+        {%- for block in messages[0]['content'] %}
+            {%- if block['type'] == 'text' %}
+                {{- block['text'] }}
+            {%- else %}
+                {{- raise_exception('Only text chunks are supported in system message contents.') }}
+            {%- endif %}
+        {%- endfor %}
+    {%- endif %}
+    {{- '[/SYSTEM_PROMPT]' -}}
+    {%- set loop_messages = messages[1:] %}
+{%- else %}
+    {%- set loop_messages = messages %}
+    {%- if default_system_message != '' %}
+        {{- '[SYSTEM_PROMPT]' + default_system_message + '[/SYSTEM_PROMPT]' }}
+    {%- endif %}
+{%- endif %}
+
+
+{#- Tools definition #}
+{%- set tools_definition = '' %}
+{%- set has_tools = false %}
+{%- if tools is defined and tools is not none and tools|length > 0 %}
+    {%- set has_tools = true %}
+    {%- set tools_definition = '[AVAILABLE_TOOLS]' + (tools| tojson) + '[/AVAILABLE_TOOLS]' %}
+    {{- tools_definition }}
+{%- endif %}
+
+{#- Checks for alternating user/assistant messages. #}
+{%- set ns = namespace(index=0) %}
+{%- for message in loop_messages %}
+    {%- if message.role == 'user' or (message.role == 'assistant' and (message.tool_calls is not defined or message.tool_calls is none or message.tool_calls | length == 0)) %}
+        {%- if (message['role'] == 'user') != (ns.index % 2 == 0) %}
+            {{- raise_exception('After the optional system message, conversation roles must alternate user and assistant roles except for tool calls and results.') }}
+        {%- endif %}
+        {%- set ns.index = ns.index + 1 %}
+    {%- endif %}
+{%- endfor %}
+
+{#- Handle conversation messages. #}
+{%- for message in loop_messages %}
+
+    {#- User messages supports text content or text and image chunks. #}
+    {%- if message['role'] == 'user' %}
+        {%- if message['content'] is string %}
+            {{- '[INST]' + message['content'] + '[/INST]' }}
+        {%- elif message['content'] | length > 0 %}
+            {{- '[INST]' }}
+            {%- if message['content'] | length == 2 %}
+                {%- set blocks = message['content'] | sort(attribute='type') %}
+            {%- else %}
+                {%- set blocks = message['content'] %}
+            {%- endif %}
+            {%- for block in blocks %}
+                {%- if block['type'] == 'text' %}
+                    {{- block['text'] }}
+                {%- elif block['type'] in ['image', 'image_url'] %}
+                    {{- '[IMG]' }}
+                {%- else %}
+                    {{- raise_exception('Only text, image and image_url chunks are supported in user message content.') }}
+                {%- endif %}
+            {%- endfor %}
+            {{- '[/INST]' }}
+        {%- else %}
+            {{- raise_exception('User message must have a string or a list of chunks in content') }}
+        {%- endif %}
+
+    {#- Assistant messages supports text content or text and image chunks. #}
+    {%- elif message['role'] == 'assistant' %}
+        {%- if (message['content'] is none or message['content'] == '' or message['content']|length == 0) and (message['tool_calls'] is not defined or message['tool_calls'] is none or message['tool_calls']|length == 0) %}
+            {{- raise_exception('Assistant message must have a string or a list of chunks in content or a list of tool calls.') }}
+        {%- endif %}
+
+        {% generation %}
+
+        {%- if message['content'] is string %}
+            {{- message['content'] }}
+        {%- elif message['content'] | length > 0 %}
+            {%- for block in message['content'] %}
+                {%- if block['type'] == 'text' %}
+                    {{- block['text'] }}
+                {%- else %}
+                    {{- raise_exception('Only text chunks are supported in assistant message contents.') }}
+                {%- endif %}
+            {%- endfor %}
+        {%- endif %}
+        
+        {%- if message['tool_calls'] is defined and message['tool_calls'] is not none and message['tool_calls']|length > 0 %}
+            {%- for tool in message['tool_calls'] %}
+                {%- set arguments = tool['function']['arguments'] %}
+                {%- if arguments is not string %}
+                    {%- set arguments = arguments|tojson|safe %}
+                {%- elif arguments == '' %}
+                    {%- set arguments = '{}' %}
+                {%- endif %}
+                {{- '[TOOL_CALLS]' + tool['function']['name'] + '[ARGS]' + arguments }}
+            {%- endfor %}
+        {%- endif %}
+
+        {#- End of sequence token for each assistant messages. #}
+        {{- eos_token }}
+
+        {% endgeneration %}
+
+    {#- Tool messages only supports text content. #}
+    {%- elif message['role'] == 'tool' %}
+        {{- '[TOOL_RESULTS]' + message['content']|string + '[/TOOL_RESULTS]' }}
+
+    {#- Raise exception for unsupported roles. #}
+    {%- else %}
+        {{- raise_exception('Only user, assistant and tool roles are supported, got ' + message['role']) }}
+    {%- endif %}
+{%- endfor %}
