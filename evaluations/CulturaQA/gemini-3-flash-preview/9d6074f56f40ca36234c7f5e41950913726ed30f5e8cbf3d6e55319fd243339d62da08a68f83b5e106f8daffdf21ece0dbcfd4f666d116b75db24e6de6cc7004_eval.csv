@@ -1,0 +1,2 @@
+id,question,generated_answer,reference_answer,bertscore_f1,bertscore_precision,bertscore_recall
+9d6074f56f40ca36234c7f5e41950913726ed30f5e8cbf3d6e55319fd243339d62da08a68f83b5e106f8daffdf21ece0dbcfd4f666d116b75db24e6de6cc7004,Ποιο είναι το έργο του Ευκλείδη που θεμελίωσε την αξιωματική γεωμετρία;,Το έργο του Ευκλείδη που θεμελίωσε την αξιωματική γεωμετρία είναι τα **«Στοιχεία»** (λατινικά: *Elementa*).,Τα «Στοιχεία».,0.7110453248023987,0.6227796077728271,0.8284620642662048

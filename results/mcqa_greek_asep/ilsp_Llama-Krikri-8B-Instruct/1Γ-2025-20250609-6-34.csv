@@ -1,0 +1,4 @@
+id,generated_answer,correct_answer
+1Γ-2025-20250609-6-34,"Α. ""SMTP""
+
+Το SMTP (Simple Mail Transfer Protocol) είναι το πρωτόκολλο που χρησιμοποιείται αποκλειστικά για την αποστολή emails. Το HTTP (HyperText Transfer Protocol) χρησιμοποιείται για την μεταφορά υπερκειμένου (όπως στις ιστοσελίδες), το FTP (File Transfer Protocol) για τη μεταφορά αρχείων και το TCP (Transmission Control Protocol) είναι πρωτόκολλο μεταφοράς δεδομένων στο διαδίκτυο, αλλά δεν είναι ειδικό για την αποστολή/λήψη emails.",Α

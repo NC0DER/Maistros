@@ -1,0 +1,37 @@
+id,question,generated_answer,reference_answer
+59ca228983e8f988431df83501c4f35e926fc1dcc7dcb2617b5e54fbe38f025a10b1d5c947ef40f5f0168aec296ee377d51e1156dfc668925a0658d8732f2d58,"Κατά την αποσύνθεση του KClO3 (2KClO3(s) → 2KCl(s) + 3O2(g)), θερμαίνονται 24,5 g KClO3 και η απόδοση αντίδρασης είναι 80%. Πόσα λίτρα O2 παράγονται σε STP; Δίνεται: M(KClO3)=122,5 g/mol, 1 mol αερίου σε STP = 22,4 L.","Πρώτα υπολογίζουμε τα mol του KClO₃:
+
+$$
+\text{mol KClO₃} = \frac{24,5 \text{ g}}{122,5 \text{ g/mol}} = 0,2 \text{ mol}
+$$
+
+Από την αντίδραση:
+
+$$
+2 \text{ mol KClO₃} → 3 \text{ mol O₂}
+$$
+
+Άρα:
+
+$$
+0,2 \text{ mol KClO₃} → \frac{3}{2} \times 0,2 = 0,3 \text{ mol O₂}
+$$
+
+Διότι η απόδοση είναι 80%, τα πραγματικά mol O₂ είναι:
+
+$$
+0,3 \times 0,8 = 0,24 \text{ mol O₂}
+$$
+
+Σε STP, 1 mol αερίου = 22,4 L, άρα:
+
+$$
+0,24 \text{ mol} \times 22,4 \text{ L/mol} = 5,376 \text{ L}
+$$
+
+**Απάντηση: 5,38 L O₂**","- n(KClO3) = 24,5/122,5 = 0,200 mol
+- Θεωρητικά: n(O2) = (3/2)·0,200 = 0,300 mol
+- Πραγματικά (80%): n(O2) = 0,300·0,80 = 0,240 mol
+- V(STP) = 0,240·22,4 = 5,38 L
+
+Απάντηση: 5,38 L O2."

@@ -1,0 +1,2 @@
+id,question,generated_answer,reference_answer,bertscore_f1,bertscore_precision,bertscore_recall
+0a08fe2ba971451c435374b0f10e755d0dc4da2ee4474018c2dd7d8d0cf18acd41246059e1a371fe7028a9008de580ddd15289cb9ecfe79ba7959e35a58900ea,Ποιο υπουργείο είναι υπεύθυνο για την οργάνωση και λειτουργία του Εθνικού Συστήματος Υγείας;,Υπεύθυνο υπουργείο: Υπουργείο Υγείας.,Το Υπουργείο Υγείας.,0.8550190329551697,0.8159499168395996,0.8980178236961365

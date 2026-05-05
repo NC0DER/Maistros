@@ -1,0 +1,24 @@
+id,question,generated_answer,reference_answer,bertscore_f1,bertscore_precision,bertscore_recall
+c781828f1d5cc8d40d1c5310ce22eded3578e8611ff07fa3c2d000d96574ce38a64b87512167c96fde1c1e75dc2b9af8e4545bc84332fe2c7b220228bed6fafc,"Ποιες συνεργασίες Ελλήνων με διεθνείς καλλιτέχνες έχουν καταγραφεί επίσημα, με τίτλους έργων και έτη;","Οι επίσημες συνεργασίες Ελλήνων με διεθνείς καλλιτέχνες περιλαμβάνουν:
+
+1. **Γιώργος Καπελάνος** – συνεργασία με τον **Στιβ Μακμιλλάν** (2005), τίτλος έργου: *""The Last Supper""*, σε συνεργασία για την Εθνική Πινακοθήκη Αθηνών.
+
+2. **Στέφανος Καραμανλής** – συνεργασία με τον **Πιερ Μοντερό** (2008), τίτλος έργου: *""The Garden of Earthly Delights""*, σε παράσταση στο Αθηναϊκό Θέατρο.
+
+3. **Ελένη Καραμανλή** – συνεργασία με τον **Στιβ Μακμιλλάν** (2010), τίτλος έργου: *""The New Jerusalem""*, σε παράσταση στο Εθνικό Θέατρο Αθηνών.
+
+Σημείωση: Οι παραπάνω συνεργασίες είναι παραδειγματικές και μπορεί να υπάρχουν περισσότερες ανάλογα την πηγή. Αν χρειάζεται πιο συγκεκριμένη αναζήτηση, μπορώ να βοηθήσω.","- Short Stories — 1980 — Jon & Vangelis
+- The Friends of Mr Cairo — 1981 — Jon & Vangelis
+- Private Collection — 1983 — Jon & Vangelis
+- Page of Life — 1991 — Jon & Vangelis
+- Odes — 1979 — Vangelis & Irene Papas
+- Rapsodies — 1986 — Vangelis & Irene Papas
+- Reflections — 1970 — Manos Hadjidakis & The New York Rock & Roll Ensemble
+- Nana Mouskouri in New York — 1962 — Nana Mouskouri & Quincy Jones
+- Yanni Live at the Acropolis — 1994 — Yanni & Royal Philharmonic Concert Orchestra
+- Z — 1969 — Mikis Theodorakis & Costa-Gavras
+- Landscape in the Mist — 1988 — Eleni Karaindrou & Theo Angelopoulos
+- Poor Things — 2023 — Yorgos Lanthimos & Emma Stone
+
+Σημείωση: Πλήρης καταγραφή προϋποθέτει προσδιορισμό συγκεκριμένου καλλιτέχνη και διασταύρωση με επίσημες πηγές (π.χ. ΕΔΕΜ/GEA–IFPI, καταλόγους δισκογραφικών, IMDb, θεσμικά αρχεία).
+",0.6246618628501892,0.6155805587768555,0.6340150833129883

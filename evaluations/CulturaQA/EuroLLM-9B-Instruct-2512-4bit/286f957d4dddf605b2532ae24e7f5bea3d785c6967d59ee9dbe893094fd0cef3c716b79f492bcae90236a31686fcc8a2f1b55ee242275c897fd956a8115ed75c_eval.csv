@@ -1,0 +1,4 @@
+id,question,generated_answer,reference_answer,bertscore_f1,bertscore_precision,bertscore_recall
+286f957d4dddf605b2532ae24e7f5bea3d785c6967d59ee9dbe893094fd0cef3c716b79f492bcae90236a31686fcc8a2f1b55ee242275c897fd956a8115ed75c,Ποιος Έλληνας βιολόγος διετέλεσε γενικός διευθυντής του EMBL και πρώτος πρόεδρος του ERC;,"Ο Έλληνας βιολόγος που διετέλεσε γενικός διευθυντής του EMBL (European Molecular Biology Laboratory) και πρώτος πρόεδρος του ERC (European Research Council) είναι ο **Κώστας Κούτσης**.  
+
+(Σημείωση: Ο Κούτσης ήταν ο πρώτος γενικός διευθυντής του EMBL από το 1984 έως το 1991 και αργότερα έγινε πρόεδρος του ERC μεταξύ 2007 και 2010.)",Ο Φώτης Κ. Καφάτος.,0.5861198902130127,0.5339189171791077,0.6496343016624451
