@@ -4,7 +4,6 @@
 
 # Maistros: A Greek Large Language Model Adapted Through Knowledge Distillation From Large Reasoning Models
 
-## About
 This repository stores the code to reproduce the [arxiv paper](https://arxiv.org/abs/2605.01870).  
 The model (full and 4-bit quantized versions) and dataset are hosted on [HuggingFace](https://huggingface.co/IMISLab).
 
