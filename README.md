@@ -7,7 +7,9 @@
 This repository stores the code to facilitate reproducibility for the [arxiv paper](https://arxiv.org/abs/2605.01870).  
 The model (full and 4-bit quantized versions) and dataset are hosted on [HuggingFace](https://huggingface.co/IMISLab).
 
-<img src="images/maistros_approach.png" width="400"/>  
+<div align="center">
+  <img src="images/maistros_approach.png" width="400"/>
+</div>
 
 ## Installation
 ```
